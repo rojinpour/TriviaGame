@@ -1,0 +1,14 @@
+h1 {
+    text-align: center;
+    padding: 0.5em 0.6em;
+    opacity: .7;
+    color: yellow;
+    background-color: black;
+}
+
+
+body {
+    background: url('../images/hello.jpg');
+    text-align: center;
+}
+
