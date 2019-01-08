@@ -1,15 +1,8 @@
 $( document ).ready(function() {
-
-       
-    
-    
 var game = {
-           
-           
-           
-           
+               
      questions: [
-            {
+            { 
              question: 'Which is not a country?',
             possibles: ['Canada', 'Israel', 'Africa', 'Morocco'],
                 id: 'question-one',
@@ -30,8 +23,7 @@ var game = {
                 answer: 3
             }, 
             
-            
-         {
+            {
                 question: 'Who painted the Sistine Chapel ceiling?',
                 possibles: [' Leonardo Da Vinci', 'Michelangelo', 'Raphael', 'Picasso'],
                 id: 'question-four',
@@ -45,13 +37,11 @@ var game = {
                 answer: 1
             }, 
             
-            
-         {
+            {
                 question: 'What horoscope sign has a crab??',
                 possibles: ['Gemini', 'Scorpio', 'Virgo', 'Cancer'],
                 id: 'question-six',
                 answer: 3
-    
             }, 
             
             {
@@ -61,14 +51,14 @@ var game = {
                 answer: 0
             }, 
             
-        {
+            {
                 question: 'What is boiling point in Fahrenheit?',
                 possibles: ['360', '150', '212', '100'],
                 id: 'question-eight',
                 answer: 2
             }, 
             
-    {
+            {
                 question: 'Babe Ruth is associated with which sport?',
                 possibles: ['Baseball', 'Basketball', 'Football', 'Hockey'],
                 id: 'question-nine',
@@ -81,6 +71,7 @@ var game = {
                 id: 'question-ten',
                 answer: 3
             }, 
+
             {
                 question: 'How many strings does a violin have?',
                 possibles: ['3', '4', '5', '6'],
@@ -88,19 +79,16 @@ var game = {
                 answer: 1
             }, 
             
-        {
+            {
                 question: 'What is the chemical symbol for Hydrogen?',
                 possibles: ['H2O', 'HO', 'H', '02'],
                 id: 'question-twelve',
                 answer: 2
             }
-            ]}
+        ]}
     
-      
       var message = 'FIN!';
 
-    
-   
         $(".startGame").on("click", function (){
             $('.wrapper').show();
             console.log('hello');
@@ -108,11 +96,9 @@ var game = {
             $(this).hide();
         });
     
-var number = 30;
+    var number = 30;
         $('#timeLeft').on('click', run);
     
-
-
      function decrement(){
             number--;
     
@@ -131,13 +117,11 @@ var number = 30;
             counter = setInterval(decrement, 1000);
         }
         
-    
         function stop(){
   
             clearInterval(counter);
         }
     run();
-    
     
     function formTemplate(data) {
    
@@ -149,16 +133,16 @@ var number = 30;
             var possible = possibles[i];
             console.log(possible);
             qString = qString + "<input type='radio' name='"+data.id+"' value="+ i +">"+possible;
-    
         }
+
         return qString + "</form>";
     }
+
     window.formTemplate = formTemplate;
-    
     
     function buildQuestions()
     
-{
+    {
         var questionHTML = ''
         for (var i = 0; i<game.questions.length; i++) {
             questionHTML = questionHTML + formTemplate(game.questions[i]);
@@ -167,36 +151,27 @@ var number = 30;
     
     }
     
-  
     function isCorrect(question){
-        
-        
         var answers = $('[name='+question.id+']');
         var correct = answers.eq(question.answer);
         var isChecked = correct.is(':checked');
         return isChecked;
     }
     
-  
     buildQuestions();
     
-   
     function resultsTemplate(question){
-       
         var htmlBlock = '<div>'
         htmlBlock = htmlBlock + question.question + ': ' + isChecked;
         return htmlBlock + "</div>";
     }
     
-   
     function checkAnswers (){
-    
         var resultsHTML = '';
         var guessedAnswers = [];
         var correct = 0;
         var incorrect = 0;
         var unAnswered =0
-    
   
         for (var i = 0; i<game.questions.length; i++) {
             if (isCorrect(game.questions[i])) {
@@ -209,10 +184,8 @@ var number = 30;
                     unAnswered++;
                 }
             }
-    
         }
-   
-        $('.results').html('correct: '+correct+ "<br>" +'incorrect: '+incorrect+ "<br>" +'unanswered: '+unAnswered);
+        $('.results').html('Correct: '+correct+ "<br>" +'Incorrect: '+incorrect+ "<br>" +'Unanswered: '+unAnswered);
     }
     
 function checkAnswered(question){
@@ -226,13 +199,11 @@ function checkAnswered(question){
         }
 
         return anyAnswered;
-    
     }
     
-
         $('#doneButton').on('click', function() {
         checkAnswers();
         stop();
-        $("#messageDiv").html("FIN!");
+        $("#messageDiv").html("Submitted!");
         })
-    });
+});
