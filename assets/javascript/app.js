@@ -87,7 +87,7 @@ var game = {
             }
         ]}
     
-      var message = 'FIN!';
+    var message = 'FIN!';
 
         $(".startGame").on("click", function (){
             $('.wrapper').show();
@@ -105,8 +105,7 @@ var game = {
             $('#timeLeft').html('<h2>' + number + " seconds"+'</h2>');
   
             if (number === 0){
-        
-     stop();
+            stop();
             
             $('#message').html('time up!');
             checkAnswers();
@@ -118,13 +117,12 @@ var game = {
         }
         
         function stop(){
-  
             clearInterval(counter);
         }
-    run();
+
+        run();
     
     function formTemplate(data) {
-   
         var qString = "<form id='questionOne'>"+ data.question +"<br>";
     
         var possibles = data.possibles;
@@ -136,12 +134,12 @@ var game = {
         }
 
         return qString + "</form>";
-    }
+        }
 
     window.formTemplate = formTemplate;
     
     function buildQuestions()
-    
+
     {
         var questionHTML = ''
         for (var i = 0; i<game.questions.length; i++) {
